@@ -1,0 +1,30 @@
+@font-face{
+    font-family: "font";
+    src: url("../../font/Fredoka.ttf") format("opentype");
+}
+header{
+    display: flex;
+    align-items: center;
+    & img{
+        height: 100%;
+        border-radius:20px ;
+        margin-right: 20px;
+    }
+    & h1{
+        font-size: 70px;
+        font-weight: 700;
+        font-family: "font";
+
+    }
+}
+
+.tip{
+    color: #071A38;
+}
+
+.top{
+        background: linear-gradient(90deg,#1877F2 0%,#4C5BFF 45%,#A238FF 75%,#D94CFF 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
