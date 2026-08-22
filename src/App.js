@@ -10,7 +10,7 @@ function App() {
       <Header/>
       <Navbar/>
       <div className="content">
-        <Profile/>
+        <Profile name="Elon Musk"/>
       </div>
     </div>
   );
