@@ -6,7 +6,7 @@ import Messages from './components/messages/messages';
 import Navbar from './components/navbar/navbar';
 import Profile from './components/profile/profile';
 
-function App() {
+function App(props) {
   return (
     <div className="container">
       <BrowserRouter>
@@ -15,9 +15,9 @@ function App() {
       <div className="content">
         <Routes>
           
-          <Route path="/" element={<Profile name="Elon Musk"/>}/>
-          <Route path="/profile" element={<Profile name="Elon Musk"/>}/>
-          <Route path="/messages" element={<Messages/>}/>
+          <Route path="/" element={<Profile profilePage={props.state.profilePage} />}/>
+          <Route path="/profile" element={<Profile profilePage={props.state.profilePage} />}/>
+          <Route path="/messages" element={<Messages dialogNames={props.dialogNames} messageItems={props.messageItems} />}/>
         </Routes>
       </div>
       </BrowserRouter>
