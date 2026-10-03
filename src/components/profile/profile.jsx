@@ -5,8 +5,8 @@ import "./profile.css"
 function Profile(props) {
     return (
         <section>
-            <Me name={props.profilePage.users[0].name}/>
-            <Posts name={props.profilePage.users[0].name} postItems={props.profilePage.postItems} />
+            <Me user={props.profilePage.users[0]}/>
+            <Posts user={props.profilePage.users[0]} postItems={props.profilePage.postItems} addPost={props.addPost} />
         </section>
     )
 }
