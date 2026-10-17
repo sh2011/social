@@ -8,6 +8,10 @@ function Messages(props){
     let addMessage = () =>{
         props.addMessage(messageText.current.value)
     }
+    let onMessageTextChange = () =>{
+        let text = messageText.current.value;
+        props.messageTextChange(text);
+    }
     return(
         <>
         <section className="users">
@@ -15,8 +19,8 @@ function Messages(props){
         </section>
         <section className="messages">
 
-            {props.dialogPage.messageItems.map((e)=><Messagetext message={e.message} id={e.id}/>)}
-            <textarea ref={messageText} placeholder="type a message" />
+            {props.dialogPage.messageItems.map((e)=><Messagetext message={e.message}  id={e.id}/>)}
+            <textarea ref={messageText} placeholder="type a message" onChange={onMessageTextChange} value={props.newMessageText} />
             <button onClick={addMessage}>send</button>
         </section> 
         </>

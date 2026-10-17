@@ -15,9 +15,9 @@ function App(props) {
       <div className="content">
         <Routes>
           
-          <Route path="/" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} />}/>
-          <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} />}/>
-          <Route path="/messages" element={<Messages dialogPage={props.state.dialogPage} addMessage={props.addMessage} />}/>
+          <Route path="/" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} newPostText={props.state.profilePage.newPostText} postTextChange={props.postTextChange} />}/>
+          <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} postTextChange={props.postTextChange} newPostText={props.state.profilePage.newPostText} />}/>
+          <Route path="/messages" element={<Messages dialogPage={props.state.dialogPage} addMessage={props.addMessage} newMessageText={props.state.dialogPage.newMessageText} messageTextChange={props.messageTextChange} />}/>
         </Routes>
       </div>
       </BrowserRouter>

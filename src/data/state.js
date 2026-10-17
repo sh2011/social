@@ -1,4 +1,3 @@
-import Header from "../components/header/header"
 
 let state = {
     profilePage: {
@@ -11,6 +10,7 @@ let state = {
         users:[
             {id:1, name: "Elon Musk",ava:"avatar.jpeg",header:"spacex.jpg" },
         ],
+        newPostText: "",
     },
     dialogPage: {
         dialogNames: [
@@ -26,24 +26,49 @@ let state = {
             { id: 3, message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate quam aspernatur perferendis harum, labore quos eos! Est hic explicabo libero, debitis reprehenderit sequi, temporibus odit veniam nulla ipsum magni modi." },
             { id: 4, message: "New message from me" },
         ],
+        newMessageText: "",
     }
 }
-
-export let addPost = (postText) => {
+let rerender = () => {
+    return;
+}
+export let subscribe = (observer) => {
+    rerender = observer;
+}
+export let addPost = () => {
+    if(state.profilePage.newPostText.trim() === ""){
+        return;
+    }
     let newPost = {
         id: 5,
-        message: postText,
+        message: state.profilePage.newPostText,
         likes: 0,
     }
-    state.profilePage.postItems.push(newPost);
+    state.profilePage.postItems.unshift(newPost);
+    state.profilePage.newPostText = "";
+    rerender();
+}
+export let postTextChange = (text) => {
+    state.profilePage.newPostText = text;
+    rerender();
 }
 
-export let addMessage = (messageText) => {
+export let addMessage = () => {
+    if(state.dialogPage.newMessageText.trim() === ""){
+        return;
+    }
     let newMessage = {
         id: 5,
-        message: messageText,
+        message: state.dialogPage.newMessageText,
     }
     state.dialogPage.messageItems.push(newMessage);
+    state.dialogPage.newMessageText = "";
+    rerender();
+}
+
+export let messageTextChange = (text) => {
+    state.dialogPage.newMessageText = text;
+    rerender();
 }
 
 export default state

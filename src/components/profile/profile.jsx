@@ -6,7 +6,7 @@ function Profile(props) {
     return (
         <section>
             <Me user={props.profilePage.users[0]}/>
-            <Posts user={props.profilePage.users[0]} postItems={props.profilePage.postItems} addPost={props.addPost} />
+            <Posts user={props.profilePage.users[0]} postItems={props.profilePage.postItems} newPostText={props.newPostText} postTextChange={props.postTextChange} addPost={props.addPost} />
         </section>
     )
 }
