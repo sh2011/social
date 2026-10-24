@@ -6,11 +6,11 @@ let messageText = React.createRef();
 
 function Messages(props){
     let addMessage = () =>{
-        props.addMessage(messageText.current.value)
+        props.dispatch({type: "ADD-MESSAGE"})
     }
     let onMessageTextChange = () =>{
         let text = messageText.current.value;
-        props.messageTextChange(text);
+        props.dispatch({type: "UPDATE-MESSAGE-TEXT", text: text});
     }
     return(
         <>

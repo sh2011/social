@@ -1,15 +1,16 @@
 import Post from "./post"
 import react from "react"
+import { addPostAC, updatePostTextAC } from "../../data/state"
 let postText =react.createRef()
 
 
 function Posts(props){
     let addPost = () =>{
-       props.addPost(postText.current.value)
+       props.dispatch(addPostAC())
     }
     let onPostTextChange = () =>{
         let text = postText.current.value;
-        props.postTextChange(text);
+        props.dispatch(updatePostTextAC(text));
     }
     return(
             <div className="posts">

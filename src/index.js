@@ -3,22 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state, {addPost, postTextChange, addMessage, messageTextChange, subscribe} from './data/state';
+import store from './data/state';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export let rerender = () => {
+export let rerender = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state} addPost={addPost} postTextChange={postTextChange} addMessage={addMessage} messageTextChange={messageTextChange} />
+      <App state={state} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>
   );
 }
 
-rerender();
+rerender(store.getState());
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-subscribe(rerender);
+store.subscribe(() => {
+  rerender(store.getState());
+});
