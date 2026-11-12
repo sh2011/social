@@ -1,6 +1,6 @@
 import Post from "./post"
 import react from "react"
-import { addPostAC, updatePostTextAC } from "../../data/state"
+import { addPostAC, updatePostTextAC } from "../../data/profileReducer"
 let postText =react.createRef()
 
 

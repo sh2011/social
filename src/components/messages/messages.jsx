@@ -2,15 +2,16 @@ import "./messages.css"
 import Messagetext from './messagetext';
 import UserItem from "./useritem";
 import React from "react";
+import { addMessageAC, updateMessageTextAC } from "../../data/dialogReducer";
 let messageText = React.createRef();
 
 function Messages(props){
     let addMessage = () =>{
-        props.dispatch({type: "ADD-MESSAGE"})
+        props.dispatch(addMessageAC());
     }
     let onMessageTextChange = () =>{
         let text = messageText.current.value;
-        props.dispatch({type: "UPDATE-MESSAGE-TEXT", text: text});
+        props.dispatch(updateMessageTextAC(text));
     }
     return(
         <>

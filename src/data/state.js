@@ -1,6 +1,6 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
-
+import ProfileReducer from "./profileReducer";
+import dialogReducer from "./dialogReducer";
+import NavbarReducer from "./navbarReducer";
 
 let store = {
     _state: {
@@ -43,48 +43,13 @@ let store = {
         return this._state;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            if (this._state.profilePage.newPostText.trim() === "") {
-                return;
-            }
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likes: 0,
-            }
-            this._state.profilePage.postItems.unshift(newPost);
-            this._state.profilePage.newPostText = "";
-
-        } else if (action.type === UPDATE_POST_TEXT) {
-            this._state.profilePage.newPostText = action.text;
-        } else if (action.type === "ADD-MESSAGE") {
-            if (this._state.dialogPage.newMessageText.trim() === "") {
-                return;
-            }
-            let newMessage = {
-                id: 5,
-                message: this._state.dialogPage.newMessageText,
-            }
-            this._state.dialogPage.messageItems.push(newMessage);
-            this._state.dialogPage.newMessageText = "";
-        } else if (action.type === "UPDATE-MESSAGE-TEXT") {
-            this._state.dialogPage.newMessageText = action.text;
-        }
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
         this.rerender(this._state);
     },
 
 }
 export default store;
 
-export let addPostAC = () => {
-    return {
-        type: ADD_POST
-    }
-}
 
-export let updatePostTextAC = (text) => {
-    return {
-        type: UPDATE_POST_TEXT,
-        text: text
-    }
-}
+
