@@ -1,4 +1,4 @@
-let NavbarReducer = (state, action) => {
+let NavbarReducer = (state={}, action) => {
     return state;
 }  
 

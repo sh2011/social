@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './data/state';
+import store from './data/store';
 
 
 
@@ -24,3 +24,4 @@ reportWebVitals();
 store.subscribe(() => {
   rerender(store.getState());
 });
+
